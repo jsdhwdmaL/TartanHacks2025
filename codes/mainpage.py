@@ -78,7 +78,7 @@ while running:
 
     elif scene == 2:
         player.speed = 0
-        level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
+        level2.page2(screen, player, WIDTH, HEIGHT)
         # scene = 3
 
     # elif scene == 3:
