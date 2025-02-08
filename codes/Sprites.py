@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 import protag
 import random
+import puzzles
 
 class Rock:
     def __init__(self, x, y):
@@ -24,6 +25,14 @@ class Pot:
     def draw(self, screen):
          # print("Image loaded successfully!", self.image)
          screen.blit(self.image, self.rect)
+    def checkTouch(self, player):
+        #rect
+        collided = self.rect.colliderect(player.rect) #check if collided with player
+        #make the key disappear
+        if collided:
+            self.playerHasKey = True
+            player.haskey1 = True
+            self.image = None
 
 class WoodenTile:
      tileWidth, tileHeight = 50, 50

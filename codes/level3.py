@@ -13,19 +13,12 @@ import protag
 
 def page3(screen, player, WIDTH, HEIGHT):
     # background
-    font = pygame.font.Font(None, 60)
-    background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
     background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
     foreground = Sprites.ForeGround(screen)
 
-    # Initialize puzzle scene
-    puzzle_text = "do we need puzzle for this??"
-    lines = level2.wrap_text(puzzle_text, font, WIDTH - 20)
-    player_input = ""
-    solved = False
     foreground = Sprites.ForeGround(screen)
     player = protag.Player(20, 75)
-
+    pot = Sprites.Pot()
     key = puzzles.Puzzle1(200, 100)
     escapeDoor = key.door(300, 300)
     escapeDoor.draw(screen)
