@@ -3,69 +3,85 @@ from pygame.locals import *
 import sys
 import protag
 import puzzles
-import Panels
-import level1
+import Sprites
+import level2
+import fade_scene
+import door
 
 pygame.init()
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
-pygame.display.set_caption("GameName")
+pygame.display.set_caption("LiquidLabyrinth")
 
 # Create Player Instance
 player = protag.Player(20, 75)
 
 # Create puzzle1 instance
 key = puzzles.Puzzle1(200, 100)
+escapeDoor = key.door(400,300)
 key.draw(screen)
+escapeDoor.draw(screen)
 #key = level1.Puzzle1()
-rock = Panels.Rock(240, 240)
+rock = Sprites.Rock(240, 240)
 rock.draw(screen)
 # background
-background_main = pygame.image.load("assets/wooden.png")
-background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize it into 800*600
-background = Panels.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
+background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
 
-background.draw(screen)
+foreground = Sprites.ForeGround(screen)
+
+scene = 1
 running = True
-while running:
-    # Deep sea blue ship background
-    screen.blit(background_main, (0, 0))  # (0,0) means top-left corner
-    # screen.fill((255, 255, 255))
 
-    background.draw(screen)
+while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if (player.hitDoor and (keys[pygame.K_a] or keys[pygame.K_d]
+                                      | keys[pygame.K_w] or keys[pygame.K_d])):
+            scene1 = pygame.image.load("assets/woodenBackground.png")
+            scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
+            fade_scene.fade_to_next_scene(screen, clock, scene1)
+            scene = 2
 
+    if (player.hitDoor):
+        player.speed = 0
+
+    if scene == 1:
+        background.draw(screen)
+    
+    else:
+        player.speed = 0
+        level2.page2(screen, player, WIDTH, HEIGHT)
 
     # draw player
     keys = pygame.key.get_pressed()
-    player.move(keys)  # Move player
+    player.move(keys, WIDTH, HEIGHT)  # Move player
     player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
     rock.draw(screen)
-    
-    # draw key
+     # checks if player is touching obstacle, and prevents it from moving. 
+    collided = player.rect.colliderect(rock.rect) #check if collided with player
+    if(collided):
+        player.speed = 0
+    else:
+        player.speed = 3
+    # draw key and door
     key.draw(screen)
-    key.checkTouch(player)
+    escapeDoor.draw(screen)
+    
+    if player.haskey1:
+        escapeDoor.checkTouch(player)
+    else:
+        key.checkTouch(player)
 
-    transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
-    transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
-    screen.blit(transparent_surface, (0, 0))
+    foreground.draw()
     # Update the display
     pygame.display.flip()
 
     # Cap the frame rate at 60 frames per second
-    clock.tick(60)
+    clock.tick(80)
 
 
 pygame.quit()
-
-"""
-if key.playerHasKey == False:
-        
-if key.playerHasKey == True:
-        screen.blit(background_main, (0, 0))
-"""
