@@ -14,7 +14,8 @@ class Player:
         self.haskey1 = False
         self.idleCount = 0
         self.original_image = "forward"
-        self.isFlipped = False        self.hitDoor = False
+        self.isFlipped = False        
+        self.hitDoor = False
 
     def move(self, keys, width, height):
         if ((keys[pygame.K_a]) and (self.rect.x >= 0)):
