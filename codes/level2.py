@@ -7,6 +7,7 @@ import genai_texts
 import os
 import random
 import fade_scene
+import level3
 
 def wrap_text(text, font, max_width):
     words = text.split(' ')
@@ -41,10 +42,11 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
     foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
     running = True
     submitted = False
+    scene = 2
 
     while running:
         # Different background color for the new page
-        background.draw(screen)
+        scene1 = background.draw(screen)
 
         # run
         for event in pygame.event.get():
@@ -60,6 +62,12 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
                     player_input = player_input[:-1]  # Delete last character
                 else:
                     player_input += event.unicode  # Add typed character
+            if solved == True:
+                fade_scene.fade_to_next_scene(screen, pygame.time.Clock(), scene1)
+                scene = 3
+
+        if scene == 3:
+            level3.page3(screen, player, WIDTH, HEIGHT)
 
         # keys
         keys = pygame.key.get_pressed()
@@ -68,7 +76,7 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
         y_offset = 50  # Start position for the text
         for line in lines:
             rendered_text = font.render(line, True, (255, 255, 255))  # Black text
-            screen.blit(rendered_text, (10, y_offset))  # Draw at position (10, y_offset)
+            screen.blit(rendered_text, (30, y_offset))  # Draw at position (10, y_offset)
             y_offset += rendered_text.get_height()  # Move to the next line
 
         # Render player input
