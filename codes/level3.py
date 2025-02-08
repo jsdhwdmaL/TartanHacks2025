@@ -61,11 +61,13 @@ def page3(screen, player, WIDTH, HEIGHT):
         if scene == 4:
             ending.page_end(screen, player, WIDTH, HEIGHT)
 
-        # keys
-        background.draw(screen)
+        # door
         escapeDoor.draw(screen)
+
         # draw player
         keys = pygame.key.get_pressed()
+        player.move(keys, WIDTH, HEIGHT)  # Move player
+        player.draw(screen)
 
         # Render puzzle text
         y_offset = 50  # Start position for the text
@@ -80,15 +82,11 @@ def page3(screen, player, WIDTH, HEIGHT):
 
         # Display feedback
         if solved:
-            solved_surface = font.render("Congrats! You escaped!", True, (255, 255, 0))
-            screen.blit(solved_surface, (100, 300))
+            solved_surface = font.render("HELLO~", True, (255, 255, 0))
+            screen.blit(solved_surface, (100, 500))
         # elif (not solved and submitted):
         #     unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
         #     screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
-
-        player.move(keys, WIDTH, HEIGHT)  # Move player
-        player.draw(screen) 
-         # Draw player (must be AFTER filling the screen)
 
         foreground.draw()
         # Update the display
