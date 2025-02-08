@@ -21,7 +21,7 @@ class WoodenTile:
         
         self.image = pygame.image.load("assets/wooden.png")
 
-        self.image = pygame.transform.scale(self.image, (tileWidth, tileHeight))
+        self.image = pygame.transform.scale(self.image, (self.tileWidth, self.tileHeight))
 
         self.rect = self.image.get_rect(topleft=(x, y))
 
@@ -50,8 +50,9 @@ class StoneBackground:
         self.rect = self.image.get_rect(topleft=(0, 0))
 
      def draw(self, screen):
-        # print("Image loaded successfully!", self.image)
+        
         screen.blit(self.image, self.rect)
+        #print("Image loaded successfully!", self.image)
 
 
 
@@ -80,10 +81,12 @@ class Bubble:
         self.rect.y -= self.speed
         
 class ForeGround:
-   def __init__(self, screen):    
+   def __init__(self, screen, WIDTH, HEIGHT):    
       self.bubbles = [Bubble()]
       self.bubble_count = 0
       self.screen = screen
+      self.width = WIDTH
+      self.height = HEIGHT
    def draw(self):
       self.bubble_count += 1
       for bubble in self.bubbles:
@@ -91,7 +94,7 @@ class ForeGround:
       if(self.bubble_count >= 50):
          self.bubbles.append(Bubble())
          self.bubble_count = 0
-      transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
+      transparent_surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
       transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
       self.screen.blit(transparent_surface, (0, 0))
       

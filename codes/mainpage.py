@@ -5,6 +5,7 @@ import protag
 import puzzles
 import Sprites
 import level2
+import level3
 import fade_scene
 import door
 import genai_texts
@@ -16,7 +17,7 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("LiquidLabyrinth")
 
 # Generate puzzles PLEASE REMOVE THIS
-PUZZLE1 = genai_texts.generate_riddle1() 
+PUZZLE1 = "Say fish or else I will scream at you for eternity and forever and I don't like you"
 
 # Create Player Instance
 player = protag.Player(20, 75)
@@ -27,12 +28,14 @@ escapeDoor = key.door(400,300)
 key.draw(screen)
 escapeDoor.draw(screen)
 #key = level1.Puzzle1()
-rock = Sprites.Rock(240, 240)
-rock.draw(screen)
+#MAKE ROCKS HERE PLEASEEEEEEEEEEE
+rocks = [Sprites.Rock(240, 240), Sprites.Rock(400, 180), Sprites.Rock(600, 400)]
+for rock in rocks:
+    rock.draw(screen)
 # background
 background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
-foreground = Sprites.ForeGround(screen)
+foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
 
 scene = 1
 running = True
@@ -47,11 +50,14 @@ while running:
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
             scene = 2
+        elif(scene == 3):
+            #fade to background for scene 3
+            scene3 = pygame.image.load("assets/stoneBackground.PNG")
+            scene3 = pygame.transform.scale(scene3, (WIDTH, HEIGHT))
+            fade_scene.fade_to_next_scene(screen, clock, scene3)
 
-        #check if scene == 2 and riddle has been solved
-        #then moved to scene 3
 
-    if (player.hitDoor):
+    if (player.hitDoor and scene == 1):
         player.speed = 0
 
     if scene == 1:
@@ -63,8 +69,9 @@ while running:
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
-        rock.draw(screen)
-        player.collision(rock, keys, WIDTH, HEIGHT)
+        for rock in rocks:
+            rock.draw(screen)
+            player.collision(rock, keys, WIDTH, HEIGHT)
 
         # draw key and door
         key.draw(screen)
@@ -75,9 +82,15 @@ while running:
         else:
             key.checkTouch(player)
     
-    else:
+    elif scene == 2:
         player.speed = 0
         level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
+        scene = 3
+
+    elif scene == 3:
+        player.speed = 3
+        level3.page3(screen, WIDTH, HEIGHT)
+
 
 
     foreground.draw()

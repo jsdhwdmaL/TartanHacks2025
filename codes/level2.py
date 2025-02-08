@@ -38,7 +38,7 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
     lines = wrap_text(puzzle_text, font, WIDTH - 20)
     player_input = ""
     solved = False
-    foreground = Sprites.ForeGround(screen)
+    foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
     running = True
     submitted = False
 
@@ -79,6 +79,9 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
         if solved:
             solved_surface = font.render("Correct! You solved the puzzle!", True, (255, 255, 0))
             screen.blit(solved_surface, (50, 400))
+            running = False
+            #remove all text and end level 2 to set up for level 3
+            #then return to main and move to puzzle 3
         elif (not solved and submitted):
             unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
             screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
