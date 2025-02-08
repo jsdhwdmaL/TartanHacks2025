@@ -9,6 +9,9 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 pygame.display.set_caption("GameName")
 
+# Create Player Instance
+player = protag.Player(400, 300)
+
 running = True
 while running:
     # Deep sea blue background
@@ -19,10 +22,16 @@ while running:
             pygame.quit()
             sys.exit()
 
+    # draw player
+    keys = pygame.key.get_pressed()
+    player.move(keys)  # Move player
+    player.draw(screen)  # Draw player (must be AFTER filling the screen)
+
     # Update the display
     pygame.display.flip()
 
     # Cap the frame rate at 60 frames per second
     clock.tick(60)
+
 
 pygame.quit()
