@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 import protag
 import background
-import level1
+import puzzles
 
 pygame.init()
 WIDTH, HEIGHT = 800, 600
@@ -15,7 +15,8 @@ pygame.display.set_caption("GameName")
 player = protag.Player(400, 300)
 
 # Create puzzle1 instance
-key = level1.Puzzle1()
+key = puzzles.Puzzle1(200, 100)
+key.draw(screen)
 
 # background
 background_main = pygame.image.load("assets/wooden.png")
@@ -25,8 +26,7 @@ running = True
 while running:
     # Deep sea blue ship background
     screen.blit(background_main, (0, 0))  # (0,0) means top-left corner
-    if key.playerHasKey == False:
-        key.draw(screen)
+    # screen.fill((255, 255, 255))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -37,10 +37,10 @@ while running:
     keys = pygame.key.get_pressed()
     player.move(keys)  # Move player
     player.draw(screen)  # Draw player (must be AFTER filling the screen)
-    key.checkTouch(player)
 
-    if key.playerHasKey == True:
-        screen.blit(background_main, (0, 0))
+    # draw key
+    key.draw(screen)
+    key.checkTouch(player)
 
     # Update the display
     pygame.display.flip()
@@ -51,3 +51,9 @@ while running:
 
 pygame.quit()
 
+"""
+if key.playerHasKey == False:
+        
+if key.playerHasKey == True:
+        screen.blit(background_main, (0, 0))
+"""

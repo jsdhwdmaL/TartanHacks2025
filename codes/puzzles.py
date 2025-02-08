@@ -2,11 +2,10 @@ import pygame
 from pygame.locals import *
 
 class Puzzle1:
-    def __init__(self):
+    def __init__(self, x, y):
         self.image = pygame.image.load("assets/key.png")
-        self.x = 380
-        self.y = 300
-        self.rect = self.image.get_rect(topleft=(self.x, self.y))
+        self.image = pygame.transform.scale(self.image, (100, 100))
+        self.rect = self.image.get_rect(topleft=(x, y))
         self.playerHasKey = False
 
     def draw(self, screen):
