@@ -57,7 +57,7 @@ class StoneBackground:
         #print("Image loaded successfully!", self.image)
         return self.image
 
-class Seaweed:
+#class Seaweed:
     
 
 
