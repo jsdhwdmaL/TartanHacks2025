@@ -3,25 +3,16 @@ from pygame.locals import *
 import sys
 import puzzles
 import Sprites
-import google.generativeai as genai
+import genai_texts
 import os
 
-API_KEY = "AIzaSyCvEAFPwUCTRIl-BdsyCOeoZZFODf6rdKY"
-genai.configure(api_key=API_KEY)
-
-# Function to get AI-generated puzzle (riddle)
-def generate_riddle():
-    model = genai.GenerativeModel('gemini-1.5-pro-latest')
-    response = model.generate_content("Create a puzzle for the player based on underwater themes, and the answer must be fish.")
-    return response.text
-
-def page2(screen, player, WIDTH, HEIGHT):
+def page2(screen, player, puzzle, WIDTH, HEIGHT):
     # background
     font = pygame.font.Font(None, 36)
     background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
     # Initialize puzzle scene
-    puzzle_text = generate_riddle()
+    puzzle_text = puzzle
     player_input = ""
     solved = False
     foreground = Sprites.ForeGround(screen)
