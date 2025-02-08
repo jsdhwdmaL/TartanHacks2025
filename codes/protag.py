@@ -61,7 +61,7 @@ class Player:
                 self.image = pygame.image.load("assets/mermaid_backward.png")
                 self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
 
-    def collision(self, keys, width, height, obstacle):
+    def collision(self, obstacle, keys, width, height, hasKey = False):
         # checks if player is touching obstacle, and prevents it from moving. 
         collided = self.rect.colliderect(obstacle.rect) #check if collided with player
         if(collided):
