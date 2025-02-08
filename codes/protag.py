@@ -20,4 +20,3 @@ class Player:
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
-print("I THINK INDIANS SPEAK INDIANESE")
