@@ -5,7 +5,7 @@ import protag
 import puzzles
 import Sprites
 
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 600 #hardcoding bad
 
 # Create a Transparent Surface for Fading
 fade_surface = pygame.Surface((WIDTH, HEIGHT))

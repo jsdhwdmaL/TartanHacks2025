@@ -22,10 +22,12 @@ class Player:
             self.idleCount = 0
             self.rect.x -= self.speed
             self.image = self.horizontal_regular
+            print("a")
         if ((keys[pygame.K_d]) and (self.rect.x <= (width - playerwidth))):
             self.idleCount = 0
             self.rect.x += self.speed
             self.image = self.horizontal_flip
+            print("d")
         if ((keys[pygame.K_w]) and (self.rect.y >= 0)):
             self.idleCount = 0
             self.rect.y -= self.speed
@@ -61,7 +63,7 @@ class Player:
                 self.image = pygame.image.load("assets/mermaid_backward.png")
                 self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
 
-    def collision(self, keys, width, height, obstacle):
+    def collision(self, obstacle, keys, width, height, hasKey = False):
         # checks if player is touching obstacle, and prevents it from moving. 
         collided = self.rect.colliderect(obstacle.rect) #check if collided with player
         if(collided):
@@ -89,3 +91,5 @@ class Player:
     def draw(self, screen):
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
+
+print("protag ran")

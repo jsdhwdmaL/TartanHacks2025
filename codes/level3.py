@@ -6,45 +6,38 @@ import Sprites
 import genai_texts
 import os
 import random
+import level2
+import ending
 import fade_scene
-import level3
+import protag
 
-def wrap_text(text, font, max_width):
-    words = text.split(' ')
-    lines = []
-    current_line = ''
-
-    for word in words:
-        test_line = current_line + ' ' + word if current_line else word
-        test_width, _ = font.size(test_line)
-
-        if test_width <= max_width:  # If the line fits within the width
-            current_line = test_line
-        else:
-            lines.append(current_line)
-            current_line = word
-
-    if current_line:  # Add the last line
-        lines.append(current_line)
-
-    return lines
-
-def page2(screen, player, puzzle, WIDTH, HEIGHT):
+def page3(screen, player, WIDTH, HEIGHT):
+def page3(screen, WIDTH, HEIGHT):
     # background
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 60)
+    background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
     background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
+    foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
 
     # Initialize puzzle scene
-    puzzle_text = puzzle
-    lines = wrap_text(puzzle_text, font, WIDTH - 20)
+    puzzle_text = "do we need puzzle for this??"
+    lines = level2.wrap_text(puzzle_text, font, WIDTH - 20)
     player_input = ""
     solved = False
-    foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
+    foreground = Sprites.ForeGround(screen)
+    player = protag.Player(20, 75)
+
+    key = puzzles.Puzzle1(200, 100)
+    escapeDoor = key.door(300, 300)
+    escapeDoor.draw(screen)
+    key.draw(screen)
+
     running = True
     submitted = False
-    scene = 2
+    scene = 3
 
     while running:
+        player.speed = 10
         # Different background color for the new page
         scene1 = background.draw(screen)
 
@@ -64,12 +57,15 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
                     player_input += event.unicode  # Add typed character
             if solved == True:
                 fade_scene.fade_to_next_scene(screen, pygame.time.Clock(), scene1)
-                scene = 3
+                scene = 4
 
-        if scene == 3:
-            level3.page3(screen, player, WIDTH, HEIGHT)
+        if scene == 4:
+            ending.page_end(screen, player, WIDTH, HEIGHT)
 
         # keys
+        background.draw(screen)
+        escapeDoor.draw(screen)
+        # draw player
         keys = pygame.key.get_pressed()
 
         # Render puzzle text
@@ -85,17 +81,16 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
 
         # Display feedback
         if solved:
-            solved_surface = font.render("Correct! You solved the puzzle!", True, (255, 255, 0))
-            screen.blit(solved_surface, (50, 400))
-            running = False
-            #remove all text and end level 2 to set up for level 3
-            #then return to main and move to puzzle 3
-        elif (not solved and submitted):
-            unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
-            screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
-        # draw key
-        # key.draw(screen)
-        # key.checkTouch(player)
+            solved_surface = font.render("Congrats! You escaped!", True, (255, 255, 0))
+            screen.blit(solved_surface, (100, 300))
+        # elif (not solved and submitted):
+        #     unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
+        #     screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
+
+        player.move(keys, WIDTH, HEIGHT)  # Move player
+        player.draw(screen) 
+         # Draw player (must be AFTER filling the screen)
+
         foreground.draw()
         # Update the display
         pygame.display.flip()
