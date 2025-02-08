@@ -23,7 +23,9 @@ key.draw(screen)
 rock = Sprites.Rock(240, 240)
 rock.draw(screen)
 # background
-background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
+background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
+
+foreground = Sprites.ForeGround(screen)
 
 scene = 1
 running = True
@@ -45,9 +47,7 @@ while running:
 
     if scene == 1:
         background.draw(screen)
-        transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
-        transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
-        screen.blit(transparent_surface, (0, 0))
+    
     else:
         player.speed = 0
         level2.page2(screen, player, WIDTH, HEIGHT)
@@ -68,6 +68,7 @@ while running:
     key.draw(screen)
     key.checkTouch(player)
 
+    foreground.draw()
     # Update the display
     pygame.display.flip()
 
