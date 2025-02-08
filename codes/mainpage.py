@@ -64,6 +64,8 @@ while running:
     if scene == 1:
         background.draw(screen)
         key.draw(screen)
+        
+        #draw seaweed
         for seaweed in seaweeds:
             seaweed.draw(screen)
         escapeDoor.draw(screen)
@@ -76,7 +78,7 @@ while running:
             rock.draw(screen)
             player.collision(rock, keys, WIDTH, HEIGHT)
 
-        #draw seaweed
+        
         
         # draw key and door
         key.draw(screen)
