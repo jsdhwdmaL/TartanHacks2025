@@ -10,7 +10,7 @@ import random
 def page2(screen, player, puzzle, WIDTH, HEIGHT):
     # background
     font = pygame.font.Font(None, 36)
-    background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
+    background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
 
     # Initialize puzzle scene
     puzzle_text = puzzle

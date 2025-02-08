@@ -15,8 +15,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 pygame.display.set_caption("LiquidLabyrinth")
 
-# Generate puzzles
-PUZZLE1 = genai_texts.generate_riddle1()
+# Generate puzzles PLEASE REMOVE THIS
+PUZZLE1 = genai_texts.generate_riddle1() 
 
 # Create Player Instance
 player = protag.Player(20, 75)
@@ -30,7 +30,7 @@ escapeDoor.draw(screen)
 rock = Sprites.Rock(240, 240)
 rock.draw(screen)
 # background
-background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
+background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
 foreground = Sprites.ForeGround(screen)
 
@@ -47,6 +47,9 @@ while running:
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
             scene = 2
+
+        #check if scene == 2 and riddle has been solved
+        #then moved to scene 3
 
     if (player.hitDoor):
         player.speed = 0
