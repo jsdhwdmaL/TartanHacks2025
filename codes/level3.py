@@ -32,9 +32,8 @@ def page3(screen, player, WIDTH, HEIGHT):
         player.speed = 10
         # Different background color for the new page
         scene1 = background.draw(screen)
-
         # run
-        pot.draw()
+        pot.draw(screen)
         if solved == True:
                 fade_scene.fade_to_next_scene(screen, pygame.time.Clock(), scene1)
                 scene = 4
