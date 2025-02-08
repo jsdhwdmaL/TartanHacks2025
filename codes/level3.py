@@ -25,6 +25,8 @@ def page3(screen, player, WIDTH, HEIGHT):
     # key.draw(screen)
     running = True
     scene = 3
+    get = False
+    bubble_num = 0
 
     while running:
         player.speed = 10
@@ -35,13 +37,9 @@ def page3(screen, player, WIDTH, HEIGHT):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if (player.getBubble and scene == 1):
+            if (get):
                 fade_scene.fade_to_next_scene(screen, pygame.time.Clock(), scene1)
                 scene = 4
-
-        if scene == 4:
-            player.speed = 0
-            ending.page_end(screen, player, WIDTH, HEIGHT)
 
         if scene == 3:
             if not player.hasPot:
@@ -60,7 +58,16 @@ def page3(screen, player, WIDTH, HEIGHT):
             else:
                 for bubble in foreground.bubbles:
                     if bubble.checkTouch(player):
-                        ending.page_end(screen, player, WIDTH, HEIGHT)
+                        bubble_num += 1
+                        foreground.bubbles.remove(bubble)
+                        if bubble_num == 5:
+                            get = True
+                            scene = 4
+                        # ending.page_end(screen, player, WIDTH, HEIGHT)
+
+        elif scene == 4:
+            player.speed = 0
+            ending.page_end(screen, player, WIDTH, HEIGHT)
 
         # Display feedback
         # elif (not solved and submitted):
