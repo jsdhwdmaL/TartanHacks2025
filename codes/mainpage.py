@@ -23,15 +23,22 @@ PUZZLE1 = "Say fish or else I will scream at you for eternity and forever and I 
 player = protag.Player(20, 75)
 
 # Create puzzle1 instance
-key = puzzles.Puzzle1(200, 100)
+key = puzzles.Puzzle1(200, 340)
 escapeDoor = key.door(400,300)
 key.draw(screen)
 escapeDoor.draw(screen)
 #key = level1.Puzzle1()
 #MAKE ROCKS HERE PLEASEEEEEEEEEEE
-rocks = [Sprites.Rock(240, 240), Sprites.Rock(400, 180), Sprites.Rock(600, 400)]
+rock_coords = [[240,240], [180, 180], [180, 240], [120, 180], [320, 200], [320, 280], [380, 200]]
+rocks = []
+for rock_coord in rock_coords:
+    rocks.append(Sprites.Rock(rock_coord[0], rock_coord[1])) 
 for rock in rocks:
     rock.draw(screen)
+seaweed_coords = [[320, 380], [240, 380], [180, 308]]
+seaweeds = []
+for seaweed_coord in seaweed_coords:
+    seaweeds.append(Sprites.Seaweed(seaweed_coord[0], seaweed_coord[1]))
 # background
 background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
@@ -62,11 +69,14 @@ while running:
         keys = pygame.key.get_pressed()
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
-
+        #draw rocks
         for rock in rocks:
             rock.draw(screen)
             player.collision(rock, keys, WIDTH, HEIGHT)
 
+        #draw seaweed
+        for seaweed in seaweeds:
+            seaweed.draw(screen)
         # draw key and door
         key.draw(screen)
         escapeDoor.draw(screen)

@@ -57,8 +57,30 @@ class StoneBackground:
         #print("Image loaded successfully!", self.image)
         return self.image
 
-#class Seaweed:
-    
+class Seaweed:
+    width, height = 90,90
+    def __init__(self, x, y):
+        self.seaweed_count = 0
+        
+        self.image = pygame.image.load("assets/seaweed_1.png")
+
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+
+        self.rect = self.image.get_rect(topleft=(x, y))
+
+    def draw(self, screen):
+        # print("Image loaded successfully!", self.image)
+        self.seaweed_count += 1
+        screen.blit(self.image, self.rect)
+        if(self.seaweed_count >= 15):
+            self.image = pygame.image.load("assets/seaweed_2.png")
+
+            self.image = pygame.transform.scale(self.image, (self.width, self.height))
+        if(self.seaweed_count >= 30):
+            self.image = pygame.image.load("assets/seaweed_1.png")
+            self.seaweed_count = 0
+            self.image = pygame.transform.scale(self.image, (self.width, self.height))
+            
 
 
 class Bubble:
