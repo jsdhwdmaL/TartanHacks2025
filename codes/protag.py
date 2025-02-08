@@ -12,6 +12,7 @@ class Player:
         self.horizontal_regular = pygame.transform.flip(self.image, False, False)
         self.horizontal_flip = pygame.transform.flip(self.image, True, False)
         self.haskey1 = False
+        self.hitDoor = False
 
     def move(self, keys, width, height):
         if ((keys[pygame.K_a]) and (self.rect.x >= 0)):
