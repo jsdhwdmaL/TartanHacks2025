@@ -68,7 +68,7 @@ while running:
         #draw seaweed
         for seaweed in seaweeds:
             seaweed.draw(screen)
-        escapeDoor.draw(screen)
+        
         # draw player
         keys = pygame.key.get_pressed()
         player.move(keys, WIDTH, HEIGHT)  # Move player
@@ -77,7 +77,7 @@ while running:
         for rock in rocks:
             rock.draw(screen)
             player.collision(rock, keys, WIDTH, HEIGHT)
-
+        escapeDoor.draw(screen)
         # if no key, door is a obstacle
         if(not player.haskey1):
             player.collision(escapeDoor, keys, WIDTH, HEIGHT)
