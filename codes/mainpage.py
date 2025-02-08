@@ -50,12 +50,6 @@ while running:
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
             scene = 2
-        elif(scene == 3):
-            #fade to background for scene 3
-            scene3 = pygame.image.load("assets/stoneBackground.PNG")
-            scene3 = pygame.transform.scale(scene3, (WIDTH, HEIGHT))
-            fade_scene.fade_to_next_scene(screen, clock, scene3)
-
 
     if (player.hitDoor and scene == 1):
         player.speed = 0
