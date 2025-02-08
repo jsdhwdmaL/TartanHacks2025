@@ -3,15 +3,15 @@ from pygame.locals import *
 import sys
 import puzzles
 import Sprites
-print("no")
+
 def page2(screen, player, WIDTH, HEIGHT):
     # background
     background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
-
+    foreground = Sprites.ForeGround(screen)
     running = True
     while running:
         # Different background color for the new page
-        screen.fill((50, 0, 0))
+        foreground.draw()
 
         # run
         for event in pygame.event.get():
