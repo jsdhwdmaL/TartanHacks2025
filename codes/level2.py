@@ -2,11 +2,11 @@ import pygame
 from pygame.locals import *
 import sys
 import puzzles
-import Panels
+import Sprites
 
 def page2(screen, player, WIDTH, HEIGHT):
     # background
-    background = Panels.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
+    background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
     running = True
     while running:
