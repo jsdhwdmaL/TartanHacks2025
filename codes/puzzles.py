@@ -18,6 +18,7 @@ class Puzzle1:
         #make the key disappear
         if collided:
             self.playerHasKey = True
+            player.haskey1 = True
             self.image = None
 
         #now the player should move to the chest or the other target to solve this puzzle

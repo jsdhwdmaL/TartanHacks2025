@@ -11,6 +11,8 @@ class Player:
         self.speed = 4
         self.horizontal_regular = pygame.transform.flip(self.image, False, False)
         self.horizontal_flip = pygame.transform.flip(self.image, True, False)
+        self.haskey1 = False
+
     def move(self, keys):
         if (keys[pygame.K_LEFT] or keys[pygame.K_a]):
             self.rect.x -= self.speed
@@ -22,17 +24,11 @@ class Player:
             self.rect.y -= self.speed
             self.image = pygame.image.load("assets/mermaid_backward.png")
             self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
-            
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
             self.rect.y += self.speed
             self.image = pygame.image.load("assets/mermaid_forward.png")
             self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
-           
-
 
     def draw(self, screen):
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
-
-print("Adi is here")
-print('CAN U GUYS SEE THIS')
