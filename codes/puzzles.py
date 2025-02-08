@@ -28,4 +28,4 @@ class Puzzle1:
 
         #now the player should move to the chest or the other target to solve this puzzle
 
-print("puzzle 1 has ran")
+print("puzzle has ran")
