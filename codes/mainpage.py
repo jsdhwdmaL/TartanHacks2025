@@ -81,15 +81,15 @@ while running:
             escapeDoor.checkTouch(player)
         else:
             key.checkTouch(player)
-    
+
     elif scene == 2:
         player.speed = 0
         level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
-        scene = 3
+        # scene = 3
 
-    elif scene == 3:
-        player.speed = 3
-        level3.page3(screen, WIDTH, HEIGHT)
+    # elif scene == 3:
+    #     player.speed = 3
+    #     level3.page3(screen, WIDTH, HEIGHT)
 
 
 
