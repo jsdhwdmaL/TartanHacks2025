@@ -6,22 +6,17 @@ class Player:
         self.image = pygame.image.load("assets/player.png")
         self.image = pygame.transform.scale(self.image, (100, 60))
         self.rect = self.image.get_rect(topleft=(x, y))
-        self.speed = 3
-        self.has_moved = False
+        self.speed = 4
 
     def move(self, keys):
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
             self.rect.x -= self.speed
-            self.has_moved = False
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             self.rect.x += self.speed
-            self.has_moved = False
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] or keys[pygame.K_w]:
             self.rect.y -= self.speed
-            self.has_moved = False
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_DOWN] or keys[pygame.K_s]:
             self.rect.y += self.speed
-            self.has_moved = False
 
     def draw(self, screen):
         # print("Image loaded successfully!", self.image)
