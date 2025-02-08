@@ -13,7 +13,9 @@ class Rock:
     def draw(self, screen):
          # print("Image loaded successfully!", self.image)
          screen.blit(self.image, self.rect)
-        
+
+class Pot:
+    def __int__(self, x, y)   
 
 class WoodenTile:
      tileWidth, tileHeight = 50, 50
