@@ -35,11 +35,8 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
                 else:
                     player_input += event.unicode  # Add typed character
 
-        # draw player
+        # keys
         keys = pygame.key.get_pressed()
-        player.speed = 4
-        player.move(keys, WIDTH, HEIGHT)  # Move player
-        player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
         # Render puzzle text
         text_surface = font.render(puzzle_text, True, (255, 255, 255))
