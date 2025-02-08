@@ -49,9 +49,11 @@ class StoneBackground:
 
         self.rect = self.image.get_rect(topleft=(0, 0))
 
+
      def draw(self, screen):
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
+        return self.image
 
 
 

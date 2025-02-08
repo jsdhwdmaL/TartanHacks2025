@@ -8,13 +8,13 @@ import os
 import random
 import level2
 
-def page3(screen, player, puzzle, WIDTH, HEIGHT):
+def page3(screen, player, WIDTH, HEIGHT):
     # background
     font = pygame.font.Font(None, 36)
     background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
     # Initialize puzzle scene
-    puzzle_text = puzzle
+    puzzle_text = "do we need puzzle for this??"
     lines = level2.wrap_text(puzzle_text, font, WIDTH - 20)
     player_input = ""
     solved = False
@@ -48,7 +48,7 @@ def page3(screen, player, puzzle, WIDTH, HEIGHT):
         y_offset = 50  # Start position for the text
         for line in lines:
             rendered_text = font.render(line, True, (255, 255, 255))  # Black text
-            screen.blit(rendered_text, (10, y_offset))  # Draw at position (10, y_offset)
+            screen.blit(rendered_text, (30, y_offset))  # Draw at position (10, y_offset)
             y_offset += rendered_text.get_height()  # Move to the next line
 
         # Render player input

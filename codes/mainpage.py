@@ -16,7 +16,8 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("LiquidLabyrinth")
 
 # Generate puzzles PLEASE REMOVE THIS
-PUZZLE1 = genai_texts.generate_riddle1() 
+# PUZZLE1 = genai_texts.generate_riddle1()
+PUZZLE1 = "HELLO HOLDER"
 
 # Create Player Instance
 player = protag.Player(20, 75)
@@ -74,7 +75,7 @@ while running:
             escapeDoor.checkTouch(player)
         else:
             key.checkTouch(player)
-    
+
     else:
         player.speed = 0
         level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
