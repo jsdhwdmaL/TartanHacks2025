@@ -20,6 +20,8 @@ class Puzzle1:
             self.playerHasKey = True
             player.haskey1 = True
             self.image = None
+            return True
+        return False
 
         #now the player should move to the chest or the other target to solve this puzzle
 

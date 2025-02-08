@@ -17,4 +17,4 @@ def fade_to_next_scene(screen, clock, scene1):
         screen.blit(scene1, (0, 0))  # Keep the first scene visible
         screen.blit(fade_surface, (0, 0))  # Apply fade effect
         pygame.display.flip()
-        clock.tick(30)  # Control fade speed
+        clock.tick(70)  # Control fade speed

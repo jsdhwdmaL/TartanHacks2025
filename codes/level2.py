@@ -20,7 +20,8 @@ def page2(screen, player, WIDTH, HEIGHT):
                 sys.exit()
         # draw player
         keys = pygame.key.get_pressed()
-        player.move(keys)  # Move player
+        player.speed = 4
+        player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
         # draw key
