@@ -12,7 +12,7 @@ class Player:
         self.horizontal_regular = pygame.transform.flip(self.image, False, False)
         self.horizontal_flip = pygame.transform.flip(self.image, True, False)
         self.haskey1 = False
-
+        self.idleCount = 0
     def move(self, keys, width, height):
         if ((keys[pygame.K_a]) and (self.rect.x >= 0)):
             self.rect.x -= self.speed
@@ -28,6 +28,27 @@ class Player:
             self.rect.y += self.speed
             self.image = pygame.image.load("assets/mermaid_forward.png")
             self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
+        else: #idling
+            self.idleCount += 1
+            if(self.idleCount == 60) and (self.image == pygame.image.load("assets/mermaid_backward.png")):
+                self.idleCount = 0
+                self.image = pygame.image.load("assets/mermaid_idle_backward.png")
+                self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
+            if(self.idleCount == 60) and (self.image == pygame.image.load("assets/mermaid_forward.png")):
+                self.idleCount = 0
+                self.image = pygame.image.load("assets/mermaid_idle.png")
+                self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
+            if(self.idleCount == 60) and (self.image == pygame.image.load("assets/mermaid_idle_backward.png")):
+                self.idleCount = 0
+                self.image = pygame.image.load("assets/mermaid_backward.png")
+                self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
+            if(self.idleCount == 60) and (self.image == pygame.image.load("assets/mermaid_idle.png")):
+                self.idleCount = 0
+                self.image = pygame.image.load("assets/mermaid.png")
+                self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
+
+
+
 
 
     def draw(self, screen):
