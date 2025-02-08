@@ -23,7 +23,7 @@ def page3(screen, player, WIDTH, HEIGHT):
     escapeDoor = key.door(300, 300)
     escapeDoor.draw(screen)
     key.draw(screen)
-
+    solved = False
     running = True
    
     scene = 3
@@ -34,20 +34,8 @@ def page3(screen, player, WIDTH, HEIGHT):
         scene1 = background.draw(screen)
 
         # run
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:  # Submit answer
-                    
-                    if "fish" in player_input.lower():  # Example condition (Replace with AI-checking logic)
-                        solved = True
-                elif event.key == pygame.K_BACKSPACE:
-                    player_input = player_input[:-1]  # Delete last character
-                else:
-                    player_input += event.unicode  # Add typed character
-            if solved == True:
+        pot.draw()
+        if solved == True:
                 fade_scene.fade_to_next_scene(screen, pygame.time.Clock(), scene1)
                 scene = 4
 
@@ -63,7 +51,18 @@ def page3(screen, player, WIDTH, HEIGHT):
         player.draw(screen)
 
         
+        if(not player.haskey1):
+            player.collision(escapeDoor, keys, WIDTH, HEIGHT)
+
+        
+        
        
+
+        if player.haskey1:
+            escapeDoor.checkTouch(player)
+            solved = True
+        else:
+            key.checkTouch(player)
         
 
         # Display feedback

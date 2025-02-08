@@ -16,7 +16,7 @@ class Rock:
          screen.blit(self.image, self.rect)
 
 class Pot:
-    def __int__(self, x, y):
+    def __init__(self, x, y):
         self.width = 60
         self.height = 60
         self.image = pygame.image.load("assets/pot.png")
