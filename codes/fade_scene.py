@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 import protag
 import puzzles
-import Panels
+import Sprites
 
 WIDTH, HEIGHT = 800, 600
 

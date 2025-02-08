@@ -7,7 +7,7 @@ import puzzles
 import level2
 import fade_scene
 import Sprites
-import level1
+
 
 pygame.init()
 WIDTH, HEIGHT = 800, 600
@@ -25,7 +25,7 @@ key.draw(screen)
 rock = Sprites.Rock(240, 240)
 rock.draw(screen)
 # background
-background = Panels.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
+background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
 background_main = pygame.image.load("assets/wooden.png")
 background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize it into 800*600
@@ -35,9 +35,10 @@ bubbles = [bubble]
 
 running = True
 stage = 1
+bubble_count = 0
 
-bubbles.append(Sprites.Bubble())
 while running:
+
     if stage == 1:
         background.draw(screen)
     elif stage == 2:
@@ -68,14 +69,13 @@ while running:
     # draw key
     key.draw(screen)
     key.checkTouch(player)
-    bubble_count = 0
+
     bubble_count +=1
     for bubble in bubbles:
         bubble.draw(screen)
     if(bubble_count >=80):
         bubble_count = 0
-        bubble2 = Sprites.Bubble()
-        bubbles.append(bubble2)
+        bubbles.append(Sprites.Bubble())
     transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
     transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
     screen.blit(transparent_surface, (0, 0))

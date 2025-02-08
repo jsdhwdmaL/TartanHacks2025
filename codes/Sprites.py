@@ -43,7 +43,7 @@ class WoodenTileBackground:
 
 class Bubble:
      def __init__(self):
-        width, height = 20,20
+        width, height = 30,30
         self.image = pygame.image.load("assets/Bubble.png")
 
         self.image = pygame.transform.scale(self.image, (width, height))
