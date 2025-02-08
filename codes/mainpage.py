@@ -60,13 +60,8 @@ while running:
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
-<<<<<<< HEAD
-    rock.draw(screen)
-    player.collision(keys, rock, WIDTH, HEIGHT)
-=======
         rock.draw(screen)
-        player.collision(keys, WIDTH, HEIGHT, rock)
->>>>>>> 9051b3fce8384376c7ad697ef1bfcecc37248942
+        player.collision(keys, rock, WIDTH, HEIGHT)
 
         # draw key and door
         key.draw(screen)
@@ -76,6 +71,7 @@ while running:
             escapeDoor.checkTouch(player)
         else:
             key.checkTouch(player)
+    
     else:
         player.speed = 0
         level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
