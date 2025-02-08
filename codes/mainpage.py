@@ -2,6 +2,8 @@ import pygame
 from pygame.locals import *
 import sys
 import protag
+import background
+import puzzles
 import Panels
 import level1
 
@@ -15,15 +17,22 @@ pygame.display.set_caption("GameName")
 player = protag.Player(400, 300)
 
 # Create puzzle1 instance
+key = puzzles.Puzzle1(200, 100)
+key.draw(screen)
 #key = level1.Puzzle1()
 
 # background
+background_main = pygame.image.load("assets/wooden.png")
+background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize it into 800*600
 background = Panels.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
 background.draw(screen)
 running = True
 while running:
     # Deep sea blue ship background
+    screen.blit(background_main, (0, 0))  # (0,0) means top-left corner
+    # screen.fill((255, 255, 255))
+
     background.draw(screen)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -35,6 +44,10 @@ while running:
     player.move(keys)  # Move player
     player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
+    # draw key
+    key.draw(screen)
+    key.checkTouch(player)
+
     # Update the display
     pygame.display.flip()
 
@@ -44,3 +57,9 @@ while running:
 
 pygame.quit()
 
+"""
+if key.playerHasKey == False:
+        
+if key.playerHasKey == True:
+        screen.blit(background_main, (0, 0))
+"""
