@@ -15,8 +15,9 @@ class Player:
         self.hasPot = False
         self.idleCount = 0
         self.original_image = "forward"
-        self.isFlipped = False        
+        self.isFlipped = False
         self.hitDoor = False
+        self.getBubble = False
     def idle(self):
         self.idleCount += 1
         if(self.idleCount == 15) and (self.original_image == "forward"):
@@ -63,8 +64,7 @@ class Player:
             self.image = pygame.image.load("assets/mermaid_forward.png")
             self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
             self.original_image = "forward"
-            
-            
+
 
     def collision(self, obstacle, keys, width, height):
         # checks if player is touching obstacle, and prevents it from moving. 
@@ -94,5 +94,10 @@ class Player:
     def draw(self, screen):
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
-
+    
+    def checkpot(self, screen):
+        if self.hasPot:
+            self.image = pygame.image.load("assets/mermaid_holding_forward.png")
+            self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
+            self.draw(screen)
 print("protag ran")

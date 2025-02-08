@@ -25,13 +25,14 @@ class Pot:
     def draw(self, screen):
          # print("Image loaded successfully!", self.image)
          screen.blit(self.image, self.rect)
-    def checkTouch(self, player):
+    def checkTouch(self, player, screen):
         #rect
         collided = self.rect.colliderect(player.rect) #check if collided with player
         #make the key disappear
         if collided:
+            player.checkpot(screen)
             self.playerHasKey = True
-            player.haskey1 = True
+            player.hasPot = True
             self.image = None
 
 class WoodenTile:
@@ -125,7 +126,15 @@ class Bubble:
             bubble = Bubble()
             
         self.rect.y -= self.speed
-        
+     def checkTouch(self, player):
+        #rect
+        collided = self.rect.colliderect(player.rect) #check if collided with player
+        #make the key disappear
+        if collided:
+            player.getBubble = True
+            self.image = None
+            return True
+        return False
 class ForeGround:
    def __init__(self, screen):    
       self.bubbles = [Bubble()]

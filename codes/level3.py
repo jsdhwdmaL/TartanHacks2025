@@ -21,51 +21,48 @@ def page3(screen, player, WIDTH, HEIGHT):
     pot = Sprites.Pot(100, 200)
     key = puzzles.Puzzle1(200, 100)
     escapeDoor = key.door(300, 300)
-    escapeDoor.draw(screen)
-    key.draw(screen)
-    solved = False
+    # escapeDoor.draw(screen)
+    # key.draw(screen)
     running = True
-   
     scene = 3
 
     while running:
         player.speed = 10
         # Different background color for the new page
         scene1 = background.draw(screen)
-        # run
-        pot.draw(screen)
-        if solved == True:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if (player.getBubble and scene == 1):
                 fade_scene.fade_to_next_scene(screen, pygame.time.Clock(), scene1)
                 scene = 4
 
         if scene == 4:
+            player.speed = 0
             ending.page_end(screen, player, WIDTH, HEIGHT)
 
-        # door
-        escapeDoor.draw(screen)
+        if scene == 3:
+            if not player.hasPot:
+                pot.draw(screen)
+            else:
+                player.draw(screen)
+            # door
+            # escapeDoor.draw(screen)
 
-        # draw player
-        keys = pygame.key.get_pressed()
-        player.move(keys, WIDTH, HEIGHT)  # Move player
-        player.draw(screen)
-
-        
-        if(not player.haskey1):
-            player.collision(escapeDoor, keys, WIDTH, HEIGHT)
-
-        
-        
-       
-
-        if player.haskey1:
-            escapeDoor.checkTouch(player)
-            solved = True
-        else:
-            key.checkTouch(player)
-        
+            # draw player
+            keys = pygame.key.get_pressed()
+            player.move(keys, WIDTH, HEIGHT)  # Move player
+            player.draw(screen)
+            if not player.hasPot:
+                pot.checkTouch(player, screen)
+            else:
+                for bubble in foreground.bubbles:
+                    if bubble.checkTouch(player):
+                        ending.page_end(screen, player, WIDTH, HEIGHT)
 
         # Display feedback
-        
         # elif (not solved and submitted):
         #     unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
         #     screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))

@@ -82,10 +82,6 @@ while running:
         if(not player.haskey1):
             player.collision(escapeDoor, keys, WIDTH, HEIGHT)
 
-        
-        
-       
-
         if player.haskey1:
             escapeDoor.checkTouch(player)
         else:
