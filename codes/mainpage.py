@@ -50,7 +50,12 @@ while running:
 
     if scene == 1:
         background.draw(screen)
-    
+        key.draw(screen)
+        escapeDoor.draw(screen)
+        if player.haskey1:
+            escapeDoor.checkTouch(player)
+        else:
+            key.checkTouch(player) 
     else:
         player.speed = 0
         level2.page2(screen, player, WIDTH, HEIGHT)
@@ -68,13 +73,7 @@ while running:
     else:
         player.speed = 3
     # draw key and door
-    key.draw(screen)
-    escapeDoor.draw(screen)
     
-    if player.haskey1:
-        escapeDoor.checkTouch(player)
-    else:
-        key.checkTouch(player)
 
     foreground.draw()
     # Update the display
