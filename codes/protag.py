@@ -3,7 +3,7 @@ from pygame.locals import *
 
 class Player:
     def __init__(self, x, y):
-        self.image = pygame.image.load("assets/player.png")
+        self.image = pygame.image.load("assets/player.JPG")
         self.rect = self.image.get_rect(topleft=(x, y))
         self.speed = 3
 
@@ -19,6 +19,3 @@ class Player:
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
-
-
-print("Adi is here")
