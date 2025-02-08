@@ -64,6 +64,8 @@ while running:
     if scene == 1:
         background.draw(screen)
         key.draw(screen)
+        for seaweed in seaweeds:
+            seaweed.draw(screen)
         escapeDoor.draw(screen)
         # draw player
         keys = pygame.key.get_pressed()
@@ -75,8 +77,7 @@ while running:
             player.collision(rock, keys, WIDTH, HEIGHT)
 
         #draw seaweed
-        for seaweed in seaweeds:
-            seaweed.draw(screen)
+        
         # draw key and door
         key.draw(screen)
         escapeDoor.draw(screen)
