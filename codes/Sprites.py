@@ -46,6 +46,8 @@ class Bubble:
         width, height = 25,25
         self.image = pygame.image.load("assets/Bubble.png")
 
+        self.speed = random.randint(1,2)
+
         self.image = pygame.transform.scale(self.image, (width, height))
 
         self.rect = self.image.get_rect(topleft=(random.randint(0,800), 600))
@@ -61,7 +63,7 @@ class Bubble:
             self.timecount = 0
             bubble = Bubble()
             
-        self.rect.y -= 1
+        self.rect.y -= self.speed
         
 class ForeGround:
    def __init__(self, screen):    
