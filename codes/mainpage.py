@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 import sys
 import protag
-import background
 import puzzles
 import Panels
 import level1
