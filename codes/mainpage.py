@@ -42,7 +42,7 @@ while running:
 
     # draw player
     keys = pygame.key.get_pressed()
-    player.move(keys)  # Move player
+    player.move(keys, WIDTH, HEIGHT)  # Move player
     player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
     rock.draw(screen)
