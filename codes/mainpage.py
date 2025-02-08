@@ -29,13 +29,13 @@ key.draw(screen)
 escapeDoor.draw(screen)
 #key = level1.Puzzle1()
 #MAKE ROCKS HERE PLEASEEEEEEEEEEE
-rock_coords = [[240,240], [180, 180], [180, 240], [120, 180], [320, 200], [320, 280], [380, 200]]
+rock_coords = [[240,240], [180, 180], [180, 240], [120, 180], [100, 240],[120,300],[100,360],[120,420], [100, 480],[120, 540], [320, 200], [320, 280], [380, 200], [440, 280], [520, 290],[650, 400], [580, 380]]
 rocks = []
 for rock_coord in rock_coords:
     rocks.append(Sprites.Rock(rock_coord[0], rock_coord[1])) 
 for rock in rocks:
     rock.draw(screen)
-seaweed_coords = [[320, 380], [240, 380], [180, 308]]
+seaweed_coords = [[320, 380], [20, 200], [20,300], [20,400], [400, 50], [500, 60]]
 seaweeds = []
 for seaweed_coord in seaweed_coords:
     seaweeds.append(Sprites.Seaweed(seaweed_coord[0], seaweed_coord[1]))
