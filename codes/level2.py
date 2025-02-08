@@ -24,11 +24,11 @@ def page2(screen, player, WIDTH, HEIGHT):
     puzzle_text = generate_riddle()
     player_input = ""
     solved = False
-
+    foreground = Sprites.ForeGround(screen)
     running = True
     while running:
         # Different background color for the new page
-        screen.fill((50, 0, 0))
+        foreground.draw()
 
         # run
         for event in pygame.event.get():

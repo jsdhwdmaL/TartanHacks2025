@@ -6,6 +6,7 @@ import puzzles
 import Sprites
 import level2
 import fade_scene
+import door
 
 pygame.init()
 WIDTH, HEIGHT = 800, 600
@@ -18,12 +19,16 @@ player = protag.Player(20, 75)
 
 # Create puzzle1 instance
 key = puzzles.Puzzle1(200, 100)
+escapeDoor = key.door(400,300)
 key.draw(screen)
+escapeDoor.draw(screen)
 #key = level1.Puzzle1()
 rock = Sprites.Rock(240, 240)
 rock.draw(screen)
 # background
-background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
+background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
+
+foreground = Sprites.ForeGround(screen)
 
 scene = 1
 running = True
@@ -33,21 +38,19 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if (player.haskey1 == True and (keys[pygame.K_a] or keys[pygame.K_d]
+        if (player.hitDoor and (keys[pygame.K_a] or keys[pygame.K_d]
                                       | keys[pygame.K_w] or keys[pygame.K_d])):
             scene1 = pygame.image.load("assets/woodenBackground.png")
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
             scene = 2
 
-    if (player.haskey1 == True):
+    if (player.hitDoor):
         player.speed = 0
 
     if scene == 1:
         background.draw(screen)
-        transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
-        transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
-        screen.blit(transparent_surface, (0, 0))
+    
     else:
         player.speed = 0
         level2.page2(screen, player, WIDTH, HEIGHT)
@@ -64,10 +67,16 @@ while running:
         player.speed = 0
     else:
         player.speed = 3
-    # draw key
+    # draw key and door
     key.draw(screen)
-    key.checkTouch(player)
+    escapeDoor.draw(screen)
+    
+    if player.haskey1:
+        escapeDoor.checkTouch(player)
+    else:
+        key.checkTouch(player)
 
+    foreground.draw()
     # Update the display
     pygame.display.flip()
 

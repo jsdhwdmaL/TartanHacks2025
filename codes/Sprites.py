@@ -41,6 +41,20 @@ class WoodenTileBackground:
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
 
+class StoneBackground:
+     def __init__(self, width, height):
+        self.image = pygame.image.load("assets/stoneBackground.png")
+
+        self.image = pygame.transform.scale(self.image, (width, height))
+
+        self.rect = self.image.get_rect(topleft=(0, 0))
+
+     def draw(self, screen):
+        # print("Image loaded successfully!", self.image)
+        screen.blit(self.image, self.rect)
+
+
+
 class Bubble:
      def __init__(self):
         width, height = 25,25
