@@ -59,18 +59,15 @@ while running:
         keys = pygame.key.get_pressed()
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
-
-    rock.draw(screen)
-    player.collision(keys, WIDTH, HEIGHT, rock)
-
-    # draw key and door
-    key.draw(screen)
-    escapeDoor.draw(screen)
+        rock.draw(screen)
+        player.collision(keys, WIDTH, HEIGHT, rock)
+        if player.haskey1:
+                escapeDoor.checkTouch(player)
+        else:
+            key.checkTouch(player)
+        
     
-    if player.haskey1:
-        escapeDoor.checkTouch(player)
-    else:
-        key.checkTouch(player)
+    
 
     foreground.draw()
     # Update the display
