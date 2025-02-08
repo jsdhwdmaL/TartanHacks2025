@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 import protag
+import random
 
 class Rock:
     def __init__(self, x, y):
@@ -39,4 +40,27 @@ class WoodenTileBackground:
      def draw(self, screen):
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
+
+class Bubble:
+     def __init__(self):
+        width, height = 20,20
+        self.image = pygame.image.load("assets/Bubble.png")
+
+        self.image = pygame.transform.scale(self.image, (width, height))
+
+        self.rect = self.image.get_rect(topleft=(random.randint(0,800), 600))
+
+        self.timecount = 0
+        self.draw
+     def draw(self, screen):
+        # print("Image loaded successfully!", self.image)
+        screen.blit(self.image, self.rect)
+        
+        self.timecount +=1
+        if(self.timecount>70):
+            self.timecount = 0
+            bubble = Bubble()
+            
+        self.rect.y -= 1
+        
 
