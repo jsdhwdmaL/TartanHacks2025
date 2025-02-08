@@ -76,6 +76,10 @@ while running:
             rock.draw(screen)
             player.collision(rock, keys, WIDTH, HEIGHT)
 
+        # if no key, door is a obstacle
+        if(not player.haskey1):
+            player.collision(escapeDoor, keys, WIDTH, HEIGHT)
+
         #draw seaweed
         
         # draw key and door
