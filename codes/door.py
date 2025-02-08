@@ -6,10 +6,12 @@ class door:
         self.image = pygame.image.load("assets/closed-door.png")
         self.image = pygame.transform.scale(self.image, (100, 100))
         self.rect = self.image.get_rect(topleft=(x, y))
+        self.playerHitDoor = False
         
 
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
+        if not self.playerHitDoor:
+            screen.blit(self.image, self.rect)
 
     def checkTouch(self, player):
         #rect
@@ -17,5 +19,6 @@ class door:
         #make the door disappear and chane 
         if player.haskey1 and collided:
             self.image = None
+            self.playerHitDoor = True
             player.hitDoor = True
             #now the scene should change
