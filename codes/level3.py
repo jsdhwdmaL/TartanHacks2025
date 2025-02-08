@@ -12,12 +12,11 @@ import fade_scene
 import protag
 
 def page3(screen, player, WIDTH, HEIGHT):
-def page3(screen, WIDTH, HEIGHT):
     # background
     font = pygame.font.Font(None, 60)
     background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
     background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
-    foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
+    foreground = Sprites.ForeGround(screen)
 
     # Initialize puzzle scene
     puzzle_text = "do we need puzzle for this??"

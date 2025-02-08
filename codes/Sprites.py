@@ -86,12 +86,10 @@ class Bubble:
         self.rect.y -= self.speed
         
 class ForeGround:
-   def __init__(self, screen, WIDTH, HEIGHT):    
+   def __init__(self, screen):    
       self.bubbles = [Bubble()]
       self.bubble_count = 0
       self.screen = screen
-      self.width = WIDTH
-      self.height = HEIGHT
    def draw(self):
       self.bubble_count += 1
       for bubble in self.bubbles:
@@ -99,7 +97,7 @@ class ForeGround:
       if(self.bubble_count >= 50):
          self.bubbles.append(Bubble())
          self.bubble_count = 0
-      transparent_surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
+      transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
       transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
       self.screen.blit(transparent_surface, (0, 0))
       

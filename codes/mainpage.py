@@ -35,7 +35,7 @@ for rock in rocks:
 # background
 background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
-foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
+foreground = Sprites.ForeGround(screen)
 
 scene = 1
 running = True
