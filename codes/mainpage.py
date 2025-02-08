@@ -3,6 +3,7 @@ from pygame.locals import *
 import sys
 import protag
 import background
+import level1
 
 pygame.init()
 WIDTH, HEIGHT = 800, 600
@@ -12,6 +13,9 @@ pygame.display.set_caption("GameName")
 
 # Create Player Instance
 player = protag.Player(400, 300)
+
+# Create puzzle1 instance
+key = level1.Puzzle1()
 
 # background
 background_main = pygame.image.load("assets/wooden.png")  # Adjust path if needed

@@ -12,12 +12,12 @@ class Puzzle1:
     def draw(self, screen):
         if not self.playerHasKey:
             screen.blit(self.image, self.rect)
-    
+
     def checkTouch(self, player):
         #rect
         collide = self.rect.colliderect(player.rect) #check if collided with player
         #make the key disappear
-        if collide: 
+        if collide:
             self.playerHasKey = True
             self.image = None
 
