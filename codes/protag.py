@@ -23,4 +23,4 @@ class Player:
 print("random")
 
 
-print('HI JOJO wsg my nigga')
+print('HI JOJO wsg my nigga.')
