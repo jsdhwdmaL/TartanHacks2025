@@ -18,7 +18,7 @@ class Puzzle1:
         collide = self.rect.colliderect(player.rect) #check if collided with player
         #make the key disappear
         if collide: 
-            self.playerHasKey = true
+            self.playerHasKey = True
             self.image = None
 
         #now the player should move to the chest or the other target to solve this puzzle
