@@ -19,3 +19,6 @@ class Player:
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+
+print("Adi is here")
+print('CAN U GUYS SEE THIS')
