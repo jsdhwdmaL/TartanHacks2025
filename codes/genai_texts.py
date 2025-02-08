@@ -1,6 +1,6 @@
 import google.generativeai as genai
 
-API_KEY = "AIzaSyCvEAFPwUCTRIl-BdsyCOeoZZFODf6rdKY"
+API_KEY = "AIzaSyBCdsGuNuwCjUoc1Gtmzyu2M3dfvq8eES8"
 genai.configure(api_key=API_KEY)
 
 # Function to get AI-generated puzzle (riddle)

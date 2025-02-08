@@ -6,36 +6,16 @@ import Sprites
 import genai_texts
 import os
 import random
-import fade_scene
+import level2
 
-def wrap_text(text, font, max_width):
-    words = text.split(' ')
-    lines = []
-    current_line = ''
-
-    for word in words:
-        test_line = current_line + ' ' + word if current_line else word
-        test_width, _ = font.size(test_line)
-
-        if test_width <= max_width:  # If the line fits within the width
-            current_line = test_line
-        else:
-            lines.append(current_line)
-            current_line = word
-
-    if current_line:  # Add the last line
-        lines.append(current_line)
-
-    return lines
-
-def page2(screen, player, puzzle, WIDTH, HEIGHT):
+def page3(screen, player, puzzle, WIDTH, HEIGHT):
     # background
     font = pygame.font.Font(None, 36)
     background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
     # Initialize puzzle scene
     puzzle_text = puzzle
-    lines = wrap_text(puzzle_text, font, WIDTH - 20)
+    lines = level2.wrap_text(puzzle_text, font, WIDTH - 20)
     player_input = ""
     solved = False
     foreground = Sprites.ForeGround(screen)
