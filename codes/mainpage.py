@@ -69,7 +69,7 @@ while running:
         # draw key and door
         key.draw(screen)
         escapeDoor.draw(screen)
-        
+
         if player.haskey1:
             escapeDoor.checkTouch(player)
         else:
