@@ -7,12 +7,16 @@ import Sprites
 import level2
 import fade_scene
 import door
+import genai_texts
 
 pygame.init()
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 pygame.display.set_caption("LiquidLabyrinth")
+
+# Generate puzzles
+PUZZLE1 = genai_texts.generate_riddle1()
 
 # Create Player Instance
 player = protag.Player(20, 75)
@@ -38,8 +42,7 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if (player.hitDoor and (keys[pygame.K_a] or keys[pygame.K_d]
-                                      | keys[pygame.K_w] or keys[pygame.K_d])):
+        if (player.hitDoor):
             scene1 = pygame.image.load("assets/woodenBackground.png")
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
@@ -50,6 +53,7 @@ while running:
 
     if scene == 1:
         background.draw(screen)
+        foreground.draw()
         key.draw(screen)
         escapeDoor.draw(screen)
         if player.haskey1:
@@ -58,7 +62,7 @@ while running:
             key.checkTouch(player) 
     else:
         player.speed = 0
-        level2.page2(screen, player, WIDTH, HEIGHT)
+        level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
 
     # draw player
     keys = pygame.key.get_pressed()
@@ -73,7 +77,7 @@ while running:
     else:
         player.speed = 3
     # draw key and door
-    
+
 
     foreground.draw()
     # Update the display
