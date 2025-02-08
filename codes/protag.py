@@ -12,7 +12,6 @@ class Player:
         self.horizontal_regular = pygame.transform.flip(self.image, False, False)
         self.horizontal_flip = pygame.transform.flip(self.image, True, False)
         self.haskey1 = False
-        self.hitdoor = False
         self.idleCount = 0
         self.original_image = "forward"
         self.isFlipped = False        

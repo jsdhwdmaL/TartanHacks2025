@@ -39,7 +39,7 @@ while running:
             pygame.quit()
             sys.exit()
         if (player.hitDoor and (keys[pygame.K_a] or keys[pygame.K_d]
-                                      | keys[pygame.K_w] or keys[pygame.K_d])):
+                              | keys[pygame.K_w] or keys[pygame.K_d])):
             scene1 = pygame.image.load("assets/woodenBackground.png")
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
@@ -50,7 +50,7 @@ while running:
 
     if scene == 1:
         background.draw(screen)
-    
+        foreground.draw()
     else:
         player.speed = 0
         level2.page2(screen, player, WIDTH, HEIGHT)
@@ -70,13 +70,12 @@ while running:
     # draw key and door
     key.draw(screen)
     escapeDoor.draw(screen)
-    
+
     if player.haskey1:
         escapeDoor.checkTouch(player)
     else:
         key.checkTouch(player)
 
-    foreground.draw()
     # Update the display
     pygame.display.flip()
 
