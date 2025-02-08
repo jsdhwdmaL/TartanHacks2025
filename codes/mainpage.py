@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 import sys
 import protag
+import background
 
 pygame.init()
 WIDTH, HEIGHT = 800, 600
@@ -11,11 +12,13 @@ pygame.display.set_caption("GameName")
 
 # Create Player Instance
 player = protag.Player(400, 300)
+background.drawBackground(screen, WIDTH, HEIGHT)
 
 running = True
 while running:
-    # Deep sea blue background
-    screen.fill((0, 0, 50))
+    # Deep sea blue ship background
+    
+    
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
