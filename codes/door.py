@@ -4,7 +4,7 @@ from pygame.locals import *
 class door:
     def __init__(self, x, y):
         self.image = pygame.image.load("assets/door.png")
-        self.image = pygame.transform.scale(self.image, (200, 200))
+        self.image = pygame.transform.scale(self.image, (100, 150))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.playerHitDoor = False
 
