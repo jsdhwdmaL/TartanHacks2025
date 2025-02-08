@@ -10,11 +10,16 @@ class Puzzle1:
         self.playerHasKey = False
 
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
-
+        if not self.playerHasKey:
+            screen.blit(self.image, self.rect)
+    
     def checkTouch(self, player):
         #rect
-        collide = pygame.Rect.collidepoint() #check if collided with player
+        collide = self.rect.colliderect(player.rect) #check if collided with player
         #make the key disappear
+        if collide: 
+            self.playerHasKey = True
+            self.image = None
+
         #now the player should move to the chest or the other target to solve this puzzle
 
