@@ -18,14 +18,14 @@ def page3(screen, player, WIDTH, HEIGHT):
 
     foreground = Sprites.ForeGround(screen)
     player = protag.Player(20, 75)
-    pot = Sprites.Pot()
+    pot = Sprites.Pot(100, 200)
     key = puzzles.Puzzle1(200, 100)
     escapeDoor = key.door(300, 300)
     escapeDoor.draw(screen)
     key.draw(screen)
 
     running = True
-    submitted = False
+   
     scene = 3
 
     while running:
@@ -40,7 +40,7 @@ def page3(screen, player, WIDTH, HEIGHT):
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:  # Submit answer
-                    submitted = True
+                    
                     if "fish" in player_input.lower():  # Example condition (Replace with AI-checking logic)
                         solved = True
                 elif event.key == pygame.K_BACKSPACE:
@@ -62,21 +62,12 @@ def page3(screen, player, WIDTH, HEIGHT):
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)
 
-        # Render puzzle text
-        y_offset = 50  # Start position for the text
-        for line in lines:
-            rendered_text = font.render(line, True, (255, 255, 255))  # Black text
-            screen.blit(rendered_text, (30, y_offset))  # Draw at position (10, y_offset)
-            y_offset += rendered_text.get_height()  # Move to the next line
-
-        # Render player input
-        input_surface = font.render("Your Answer: " + player_input, True, (0, 255, 0))
-        screen.blit(input_surface, (50, 300))
+        
+       
+        
 
         # Display feedback
-        if solved:
-            solved_surface = font.render("HELLO~", True, (255, 255, 0))
-            screen.blit(solved_surface, (100, 500))
+        
         # elif (not solved and submitted):
         #     unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
         #     screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
