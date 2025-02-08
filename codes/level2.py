@@ -8,6 +8,7 @@ import os
 import random
 import fade_scene
 import level3
+import random
 
 def wrap_text(text, font, max_width):
     words = text.split(' ')
@@ -29,13 +30,25 @@ def wrap_text(text, font, max_width):
 
     return lines
 
-def page2(screen, player, puzzle, WIDTH, HEIGHT):
+def page2(screen, player, WIDTH, HEIGHT):
     # background
     font = pygame.font.Font(None, 36)
     background = Sprites.StoneBackground(WIDTH, HEIGHT) # Adjust path if needed
 
+    riddles = {1: "I live in a shell, but I'm not a turtle. You might hear the ocean if you hold me to your ear. What am I?",
+               2: "I have a mouth but I never speak. I have a bed but never sleep. What am I?",
+               3: "What do you call a fish with no eyes?",
+               4: "What letter holds the most water?"}
+    answers = {1: "seashell",
+               2: "river",
+               3: "fsh",
+               4: "c"}
+
+
     # Initialize puzzle scene
-    puzzle_text = puzzle
+    puzzleNumber = random.randint(1, len(riddles))
+    puzzle_text = riddles[puzzleNumber]
+    puzzle_answer = answers[puzzleNumber]
     lines = wrap_text(puzzle_text, font, WIDTH - 20)
     player_input = ""
     solved = False
@@ -56,7 +69,7 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:  # Submit answer
                     submitted = True
-                    if "fish" in player_input.lower():  # Example condition (Replace with AI-checking logic)
+                    if puzzle_answer in player_input.lower():  # Example condition (Replace with AI-checking logic)
                         solved = True
                 elif event.key == pygame.K_BACKSPACE:
                     player_input = player_input[:-1]  # Delete last character
