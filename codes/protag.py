@@ -65,7 +65,7 @@ class Player:
             
             
 
-    def collision(self, obstacle, keys, width, height, hasKey = False):
+    def collision(self, obstacle, keys, width, height):
         # checks if player is touching obstacle, and prevents it from moving. 
         collided = self.rect.colliderect(obstacle.rect) #check if collided with player
         if(collided):
