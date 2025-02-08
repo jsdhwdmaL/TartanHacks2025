@@ -79,6 +79,7 @@ while running:
     else:
         key.checkTouch(player)
 
+    foreground.draw()
     # Update the display
     pygame.display.flip()
 

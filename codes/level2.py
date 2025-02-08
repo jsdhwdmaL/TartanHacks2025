@@ -56,7 +56,7 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
         # draw key
         # key.draw(screen)
         # key.checkTouch(player)
-
+        foreground.draw()
         # Update the display
         pygame.display.flip()
 
