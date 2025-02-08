@@ -30,8 +30,7 @@ background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 background_main = pygame.image.load("assets/wooden.png")
 background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize it into 800*600
 background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
-bubble = Sprites.Bubble()
-bubbles = [bubble]
+foreground = Sprites.ForeGround(screen)
 
 running = True
 stage = 1
@@ -69,17 +68,8 @@ while running:
     # draw key
     key.draw(screen)
     key.checkTouch(player)
-
-    bubble_count +=1
-    for bubble in bubbles:
-        bubble.draw(screen)
-    if(bubble_count >=80):
-        bubble_count = 0
-        bubbles.append(Sprites.Bubble())
-    transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
-    transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
-    screen.blit(transparent_surface, (0, 0))
-
+    foreground.draw()
+    
     # Update the display
     pygame.display.flip()
 

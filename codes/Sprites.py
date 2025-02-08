@@ -43,7 +43,7 @@ class WoodenTileBackground:
 
 class Bubble:
      def __init__(self):
-        width, height = 30,30
+        width, height = 25,25
         self.image = pygame.image.load("assets/Bubble.png")
 
         self.image = pygame.transform.scale(self.image, (width, height))
@@ -63,4 +63,20 @@ class Bubble:
             
         self.rect.y -= 1
         
+class ForeGround:
+   def __init__(self, screen):    
+      self.bubbles = [Bubble()]
+      self.bubble_count = 0
+      self.screen = screen
+   def draw(self):
+      self.bubble_count += 1
+      for bubble in self.bubbles:
+         bubble.draw(self.screen)
+      if(self.bubble_count >= 50):
+         self.bubbles.append(Bubble())
+         self.bubble_count = 0
+      transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
+      transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
+      self.screen.blit(transparent_surface, (0, 0))
+      
 
