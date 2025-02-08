@@ -59,15 +59,22 @@ while running:
         keys = pygame.key.get_pressed()
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
+
         rock.draw(screen)
         player.collision(keys, WIDTH, HEIGHT, rock)
+
+        # draw key and door
+        key.draw(screen)
+        escapeDoor.draw(screen)
+        
         if player.haskey1:
-                escapeDoor.checkTouch(player)
+            escapeDoor.checkTouch(player)
         else:
             key.checkTouch(player)
-        
-    
-    
+    else:
+        player.speed = 0
+        level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
+
 
     foreground.draw()
     # Update the display
