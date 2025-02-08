@@ -46,6 +46,11 @@ while running:
     player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
     rock.draw(screen)
+    # checks if player is touching obstacle, and prevents it from moving. 
+    collided = player.rect.colliderect(rock.rect) #check if collided with player
+    if(collided):
+        player.speed = 0
+        
     # draw key
     key.draw(screen)
     key.checkTouch(player)
