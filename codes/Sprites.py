@@ -15,7 +15,15 @@ class Rock:
          screen.blit(self.image, self.rect)
 
 class Pot:
-    def __int__(self, x, y)   
+    def __int__(self, x, y):
+        self.width = 60
+        self.height = 60
+        self.image = pygame.image.load("assets/pot.png")
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+        self.rect = self.image.get_rect(topleft=(x, y))
+    def draw(self, screen):
+         # print("Image loaded successfully!", self.image)
+         screen.blit(self.image, self.rect)
 
 class WoodenTile:
      tileWidth, tileHeight = 50, 50
