@@ -3,11 +3,10 @@ from pygame.locals import *
 
 class door:
     def __init__(self, x, y):
-        self.image = pygame.image.load("assets/closed-door.png")
-        self.image = pygame.transform.scale(self.image, (100, 100))
+        self.image = pygame.image.load("assets/door.png")
+        self.image = pygame.transform.scale(self.image, (200, 200))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.playerHitDoor = False
-        
 
     def draw(self, screen):
         if not self.playerHitDoor:
@@ -16,7 +15,7 @@ class door:
     def checkTouch(self, player):
         #rect
         collided = self.rect.colliderect(player.rect) #check if collided with player
-        #make the door disappear and chane 
+        #make the door disappear and change status
         if player.haskey1 and collided:
             self.image = None
             self.playerHitDoor = True
