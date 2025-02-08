@@ -18,13 +18,15 @@ player = protag.Player(400, 300)
 key = level1.Puzzle1()
 
 # background
-background_main = pygame.image.load("assets/wooden.png")  # Adjust path if needed
-background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize if necessary
+background_main = pygame.image.load("assets/wooden.png")
+background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize it into 800*600
 
 running = True
 while running:
     # Deep sea blue ship background
     screen.blit(background_main, (0, 0))  # (0,0) means top-left corner
+    if key.playerHasKey == False:
+        key.draw(screen)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -35,6 +37,10 @@ while running:
     keys = pygame.key.get_pressed()
     player.move(keys)  # Move player
     player.draw(screen)  # Draw player (must be AFTER filling the screen)
+    key.checkTouch(player)
+
+    if key.playerHasKey == True:
+        screen.blit(background_main, (0, 0))
 
     # Update the display
     pygame.display.flip()
