@@ -11,7 +11,7 @@ def page2(screen, player, WIDTH, HEIGHT):
     running = True
     while running:
         # Different background color for the new page
-        foreground.draw()
+        background.draw(screen)
 
         # run
         for event in pygame.event.get():
@@ -24,6 +24,7 @@ def page2(screen, player, WIDTH, HEIGHT):
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
+        foreground.draw()
         # draw key
         # key.draw(screen)
         # key.checkTouch(player)
