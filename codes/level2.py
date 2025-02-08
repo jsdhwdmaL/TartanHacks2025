@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 import puzzles
 import Sprites
-
+print("no")
 def page2(screen, player, WIDTH, HEIGHT):
     # background
     background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
