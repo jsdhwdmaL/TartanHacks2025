@@ -42,7 +42,7 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if (player.hitDoor):
+        if (player.hitDoor and scene == 1):
             scene1 = pygame.image.load("assets/woodenBackground.png")
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
