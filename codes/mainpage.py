@@ -60,8 +60,13 @@ while running:
         player.move(keys, WIDTH, HEIGHT)  # Move player
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
+<<<<<<< HEAD
     rock.draw(screen)
     player.collision(keys, rock, WIDTH, HEIGHT)
+=======
+        rock.draw(screen)
+        player.collision(keys, WIDTH, HEIGHT, rock)
+>>>>>>> 9051b3fce8384376c7ad697ef1bfcecc37248942
 
         # draw key and door
         key.draw(screen)
