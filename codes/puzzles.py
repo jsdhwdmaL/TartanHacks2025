@@ -8,7 +8,6 @@ class Puzzle1:
         self.image = pygame.transform.scale(self.image, (100, 100))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.playerHasKey = False
-        
 
     def door(self, x, y):
         escapeDoor  = door.door(x, y)

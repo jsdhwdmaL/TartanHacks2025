@@ -61,7 +61,7 @@ while running:
         player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
         rock.draw(screen)
-        # checks if player is touching obstacle, and prevents it from moving. 
+        # checks if player is touching obstacle, and prevents it from moving.
         collided = player.rect.colliderect(rock.rect) #check if collided with player
         if(collided):
             player.speed = 0
@@ -71,7 +71,7 @@ while running:
         if player.haskey1:
             escapeDoor.checkTouch(player)
         else:
-            key.checkTouch(player) 
+            key.checkTouch(player)
     else:
         player.speed = 0
         level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)

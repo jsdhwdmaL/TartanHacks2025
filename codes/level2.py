@@ -5,6 +5,7 @@ import puzzles
 import Sprites
 import genai_texts
 import os
+import random
 
 def page2(screen, player, puzzle, WIDTH, HEIGHT):
     # background
@@ -17,6 +18,8 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
     solved = False
     foreground = Sprites.ForeGround(screen)
     running = True
+    submitted = False
+
     while running:
         # Different background color for the new page
         background.draw(screen)
@@ -28,6 +31,7 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:  # Submit answer
+                    submitted = True
                     if "fish" in player_input.lower():  # Example condition (Replace with AI-checking logic)
                         solved = True
                 elif event.key == pygame.K_BACKSPACE:
@@ -50,6 +54,9 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
         if solved:
             solved_surface = font.render("Correct! You solved the puzzle!", True, (255, 255, 0))
             screen.blit(solved_surface, (50, 400))
+        elif (not solved and submitted):
+            unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
+            screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
         # draw key
         # key.draw(screen)
         # key.checkTouch(player)
