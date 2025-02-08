@@ -26,23 +26,20 @@ rock.draw(screen)
 background = Panels.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
 running = True
-stage = 1
 
 while running:
-    if stage == 1:
-        background.draw(screen)
-    elif stage == 2:
-        level2.page2(screen, player, WIDTH, HEIGHT)
-
     for event in pygame.event.get():
         if (player.haskey1 == True):
             scene1 = pygame.image.load("assets/woodenBackground.png")
             scene1 = pygame.transform.scale(scene1, (WIDTH, HEIGHT))
             fade_scene.fade_to_next_scene(screen, clock, scene1)
-            stage = 2
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
+    if (player.haskey1 == True):
+        level2.page2(screen, player, WIDTH, HEIGHT)
+    background.draw(screen)
 
     # draw player
     keys = pygame.key.get_pressed()
