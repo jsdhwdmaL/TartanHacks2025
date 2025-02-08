@@ -89,3 +89,5 @@ class Player:
     def draw(self, screen):
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
+
+print("protag ran")
