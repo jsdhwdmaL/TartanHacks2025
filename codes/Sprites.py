@@ -40,6 +40,7 @@ class WoodenTileBackground:
      def draw(self, screen):
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
+        return self.image
 
 class StoneBackground:
      def __init__(self, width, height):

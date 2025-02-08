@@ -7,10 +7,12 @@ import genai_texts
 import os
 import random
 import level2
+import ending
+import fade_scene
 
 def page3(screen, player, WIDTH, HEIGHT):
     # background
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 60)
     background = Sprites.WoodenTileBackground(WIDTH, HEIGHT) # Adjust path if needed
 
     # Initialize puzzle scene
@@ -21,10 +23,11 @@ def page3(screen, player, WIDTH, HEIGHT):
     foreground = Sprites.ForeGround(screen)
     running = True
     submitted = False
+    scene = 3
 
     while running:
         # Different background color for the new page
-        background.draw(screen)
+        scene1 = background.draw(screen)
 
         # run
         for event in pygame.event.get():
@@ -40,6 +43,12 @@ def page3(screen, player, WIDTH, HEIGHT):
                     player_input = player_input[:-1]  # Delete last character
                 else:
                     player_input += event.unicode  # Add typed character
+            if solved == True:
+                fade_scene.fade_to_next_scene(screen, pygame.time.Clock(), scene1)
+                scene = 4
+
+        if scene == 4:
+            ending.page_end(screen, player, WIDTH, HEIGHT)
 
         # keys
         keys = pygame.key.get_pressed()
@@ -57,14 +66,12 @@ def page3(screen, player, WIDTH, HEIGHT):
 
         # Display feedback
         if solved:
-            solved_surface = font.render("Correct! You solved the puzzle!", True, (255, 255, 0))
-            screen.blit(solved_surface, (50, 400))
-        elif (not solved and submitted):
-            unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
-            screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
-        # draw key
-        # key.draw(screen)
-        # key.checkTouch(player)
+            solved_surface = font.render("Congrats! You escaped!", True, (255, 255, 0))
+            screen.blit(solved_surface, (100, 300))
+        # elif (not solved and submitted):
+        #     unsolved_surface = font.render("Oops! Try again!", True, (255, 255, 0))
+        #     screen.blit(unsolved_surface, (random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)))
+
         foreground.draw()
         # Update the display
         pygame.display.flip()
