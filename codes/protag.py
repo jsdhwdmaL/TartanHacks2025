@@ -12,7 +12,7 @@ class Player:
         self.horizontal_regular = pygame.transform.flip(self.image, False, False)
         self.horizontal_flip = pygame.transform.flip(self.image, True, False)
     def move(self, keys):
-        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+        if (keys[pygame.K_LEFT] or keys[pygame.K_a]):
             self.rect.x -= self.speed
             self.image = self.horizontal_regular
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:

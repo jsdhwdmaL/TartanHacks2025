@@ -19,7 +19,8 @@ player = protag.Player(20, 75)
 key = puzzles.Puzzle1(200, 100)
 key.draw(screen)
 #key = level1.Puzzle1()
-
+rock = Panels.Rock(240, 240)
+rock.draw(screen)
 # background
 background_main = pygame.image.load("assets/wooden.png")
 background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize it into 800*600
@@ -38,11 +39,13 @@ while running:
             pygame.quit()
             sys.exit()
 
+
     # draw player
     keys = pygame.key.get_pressed()
     player.move(keys)  # Move player
     player.draw(screen)  # Draw player (must be AFTER filling the screen)
 
+    rock.draw(screen)
     # draw key
     key.draw(screen)
     key.checkTouch(player)
