@@ -53,6 +53,8 @@ class StoneBackground:
         # print("Image loaded successfully!", self.image)
         screen.blit(self.image, self.rect)
 
+class Seaweed:
+    
 
 
 class Bubble:
