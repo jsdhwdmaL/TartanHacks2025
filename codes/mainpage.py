@@ -13,7 +13,7 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("GameName")
 
 # Create Player Instance
-player = protag.Player(400, 300)
+player = protag.Player(20, 75)
 
 # Create puzzle1 instance
 key = puzzles.Puzzle1(200, 100)
@@ -47,6 +47,9 @@ while running:
     key.draw(screen)
     key.checkTouch(player)
 
+    transparent_surface = pygame.Surface((800, 600), pygame.SRCALPHA)
+    transparent_surface.fill((0, 0, 40, 128))  # RGBA: 50% transparent blue
+    screen.blit(transparent_surface, (0, 0))
     # Update the display
     pygame.display.flip()
 

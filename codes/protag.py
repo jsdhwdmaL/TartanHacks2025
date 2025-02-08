@@ -1,10 +1,12 @@
 import pygame
 from pygame.locals import *
 
+playerheight, playerwidth = 70,80
+
 class Player:
     def __init__(self, x, y):
-        self.image = pygame.image.load("assets/player.png")
-        self.image = pygame.transform.scale(self.image, (100, 60))
+        self.image = pygame.image.load("assets/mermaid_forward.png")
+        self.image = pygame.transform.scale(self.image, (playerheight, playerwidth))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.speed = 4
 
