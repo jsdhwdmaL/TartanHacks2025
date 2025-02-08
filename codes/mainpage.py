@@ -53,31 +53,29 @@ while running:
 
     if scene == 1:
         background.draw(screen)
-        foreground.draw()
+        key.draw(screen)
+        escapeDoor.draw(screen)
+        # draw player
+        keys = pygame.key.get_pressed()
+        player.move(keys, WIDTH, HEIGHT)  # Move player
+        player.draw(screen)  # Draw player (must be AFTER filling the screen)
+
+        rock.draw(screen)
+        # checks if player is touching obstacle, and prevents it from moving. 
+        collided = player.rect.colliderect(rock.rect) #check if collided with player
+        if(collided):
+            player.speed = 0
+        else:
+            player.speed = 3
+        # draw key and door
+        if player.haskey1:
+            escapeDoor.checkTouch(player)
+        else:
+            key.checkTouch(player) 
     else:
         player.speed = 0
         level2.page2(screen, player, PUZZLE1, WIDTH, HEIGHT)
 
-    # draw player
-    keys = pygame.key.get_pressed()
-    player.move(keys, WIDTH, HEIGHT)  # Move player
-    player.draw(screen)  # Draw player (must be AFTER filling the screen)
-
-    rock.draw(screen)
-     # checks if player is touching obstacle, and prevents it from moving. 
-    collided = player.rect.colliderect(rock.rect) #check if collided with player
-    if(collided):
-        player.speed = 0
-    else:
-        player.speed = 3
-    # draw key and door
-    key.draw(screen)
-    escapeDoor.draw(screen)
-
-    if player.haskey1:
-        escapeDoor.checkTouch(player)
-    else:
-        key.checkTouch(player)
 
     foreground.draw()
     # Update the display
