@@ -22,12 +22,10 @@ class Player:
             self.idleCount = 0
             self.rect.x -= self.speed
             self.image = self.horizontal_regular
-            print("a")
         if ((keys[pygame.K_d]) and (self.rect.x <= (width - playerwidth))):
             self.idleCount = 0
             self.rect.x += self.speed
             self.image = self.horizontal_flip
-            print("d")
         if ((keys[pygame.K_w]) and (self.rect.y >= 0)):
             self.idleCount = 0
             self.rect.y -= self.speed
