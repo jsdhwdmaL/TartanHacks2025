@@ -15,9 +15,9 @@ class Puzzle1:
 
     def checkTouch(self, player):
         #rect
-        collide = self.rect.colliderect(player.rect) #check if collided with player
+        collided = self.rect.colliderect(player.rect) #check if collided with player
         #make the key disappear
-        if collide:
+        if collided:
             self.playerHasKey = True
             self.image = None
 
