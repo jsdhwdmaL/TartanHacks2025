@@ -35,7 +35,7 @@ for rock_coord in rock_coords:
     rocks.append(Sprites.Rock(rock_coord[0], rock_coord[1])) 
 for rock in rocks:
     rock.draw(screen)
-seaweed_coords = [[320, 380], [20, 200], [20,300], [20,400], [400, 50], [500, 60]]
+seaweed_coords = [[320, 380], [20, 200], [20,300], [20,400], [400, 50], [500, 60], [200, 340]]
 seaweeds = []
 for seaweed_coord in seaweed_coords:
     seaweeds.append(Sprites.Seaweed(seaweed_coord[0], seaweed_coord[1]))
@@ -78,9 +78,7 @@ while running:
 
         #draw seaweed
         
-        # draw key and door
-        key.draw(screen)
-        escapeDoor.draw(screen)
+       
 
         if player.haskey1:
             escapeDoor.checkTouch(player)
