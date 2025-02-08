@@ -39,7 +39,7 @@ def page2(screen, player, puzzle, WIDTH, HEIGHT):
     lines = wrap_text(puzzle_text, font, WIDTH - 20)
     player_input = ""
     solved = False
-    foreground = Sprites.ForeGround(screen, WIDTH, HEIGHT)
+    foreground = Sprites.ForeGround(screen)
     running = True
     submitted = False
     scene = 2
