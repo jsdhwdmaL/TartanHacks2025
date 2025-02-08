@@ -20,7 +20,7 @@ class Player:
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
-print("random")
 
+print("Adi is here")
 
-print('HI JOJO wsg my nigga.')
+print('HI JOJO')
