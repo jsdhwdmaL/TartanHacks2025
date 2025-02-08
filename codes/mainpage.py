@@ -12,13 +12,15 @@ pygame.display.set_caption("GameName")
 
 # Create Player Instance
 player = protag.Player(400, 300)
-background.drawBackground(screen, WIDTH, HEIGHT)
+
+# background
+background_main = pygame.image.load("assets/wooden.png")  # Adjust path if needed
+background_main = pygame.transform.scale(background_main, (WIDTH, HEIGHT))  # Resize if necessary
 
 running = True
 while running:
     # Deep sea blue ship background
-    
-    
+    screen.blit(background_main, (0, 0))  # (0,0) means top-left corner
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -38,3 +40,4 @@ while running:
 
 
 pygame.quit()
+

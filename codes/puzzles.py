@@ -11,7 +11,7 @@ class Puzzle1:
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
-    
+
     def checkTouch(self, player):
         #rect
         collide = pygame.Rect.collidepoint() #check if collided with player

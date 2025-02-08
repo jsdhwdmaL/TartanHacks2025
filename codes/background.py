@@ -19,4 +19,3 @@ def drawBackground(screen, width, height):
                 wood = WoodenTile(x,y)
                 wood.draw(screen)
 
-                
