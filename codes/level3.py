@@ -79,4 +79,4 @@ def page3(screen, player, WIDTH, HEIGHT):
         pygame.display.flip()
 
         # Cap the frame rate at 60 frames per second
-        pygame.time.Clock().tick(60)
+        pygame.time.Clock().tick(80)

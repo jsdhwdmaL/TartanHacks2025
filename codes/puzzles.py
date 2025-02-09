@@ -5,7 +5,7 @@ import door
 class Puzzle1:
     def __init__(self, x, y):
         self.image = pygame.image.load("assets/key.png")
-        self.image = pygame.transform.scale(self.image, (80, 40))
+        self.image = pygame.transform.scale(self.image, (30, 60))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.playerHasKey = False
 

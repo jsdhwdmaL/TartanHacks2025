@@ -23,7 +23,7 @@ PUZZLE1 = "Say fish or else I will scream at you for eternity and forever and I 
 player = protag.Player(20, 75)
 
 # Create puzzle1 instance
-key = puzzles.Puzzle1(200, 340)
+key = puzzles.Puzzle1(230, 370)
 escapeDoor = key.door(400,300)
 key.draw(screen)
 escapeDoor.draw(screen)
